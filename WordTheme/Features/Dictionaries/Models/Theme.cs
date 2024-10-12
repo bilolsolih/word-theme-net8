@@ -12,4 +12,7 @@ public class Theme
 
     public ICollection<Theme>? ChildThemes { get; set; } = [];
     public ICollection<Word> Words { get; set; } = [];
+    
+    public DateTime Created { get; set; }
+    public DateTime Updated { get; set; }
 }

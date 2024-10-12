@@ -11,7 +11,19 @@ public class WordConfigurations : IEntityTypeConfiguration<Word>
         builder.ToTable("Words");
         builder.HasKey(w => w.Id);
 
-        builder.Property(w => w.Title).HasMaxLength(512).IsRequired();
-        builder.HasIndex(w => w.Title).HasDatabaseName("Word_Title_Index");
+        builder.Property(w => w.Title)
+               .HasMaxLength(512)
+               .IsRequired();
+
+        builder.HasIndex(w => w.Title)
+               .HasDatabaseName("Word_Title_Index");
+
+        builder.Property(w => w.Created)
+               .HasDefaultValueSql("CURRENT_TIMESTAMP")
+               .ValueGeneratedOnAdd();
+
+        builder.Property(w => w.Updated)
+               .HasDefaultValueSql("CURRENT_TIMESTAMP")
+               .ValueGeneratedOnAddOrUpdate();
     }
 }

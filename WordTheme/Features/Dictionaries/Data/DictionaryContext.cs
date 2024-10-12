@@ -6,9 +6,9 @@ namespace WordTheme.Features.Dictionaries.Data;
 
 public class DictionaryContext(DbContextOptions<DictionaryContext> options) : DbContext(options)
 {
-    public DbSet<Dictionary> Dictionary { get; set; }
-    public DbSet<Word> Word { get; set; }
-    public DbSet<Theme> Theme { get; set; }
+    public DbSet<Dictionary> Dictionaries { get; set; }
+    public DbSet<Word> Words { get; set; }
+    public DbSet<Theme> Themes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

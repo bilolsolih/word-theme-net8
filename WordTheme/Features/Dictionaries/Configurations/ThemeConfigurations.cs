@@ -11,10 +11,19 @@ public class ThemeConfigurations : IEntityTypeConfiguration<Theme>
         builder.ToTable("Themes");
 
         builder.HasKey(th => th.Id);
+        
+        builder.Property(th => th.Created)
+               .HasDefaultValueSql("CURRENT_TIMESTAMP")
+               .ValueGeneratedOnAdd();
+
+        builder.Property(th => th.Updated)
+               .HasDefaultValueSql("CURRENT_TIMESTAMP")
+               .ValueGeneratedOnAddOrUpdate();
 
         builder.HasMany(th => th.Words)
                .WithOne(w => w.Theme)
-               .HasForeignKey(w => w.ThemeId);
+               .HasForeignKey(w => w.ThemeId)
+               .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasOne(th => th.ParentTheme)
                .WithMany(p => p.ChildThemes)

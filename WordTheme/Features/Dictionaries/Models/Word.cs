@@ -8,4 +8,7 @@ public class Word
     public int ThemeId { get; set; }
     public required Dictionary Dictionary { get; set; }
     public required Theme Theme { get; set; }
+    
+    public DateTime Created { get; set; }
+    public DateTime Updated { get; set; }
 }
